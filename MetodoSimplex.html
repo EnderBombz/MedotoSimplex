@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método simplex</title>
+
+    <!-- Font Tenali Ramakrishna-->
+    <link href="https://fonts.googleapis.com/css2?family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
+    <!-- MDB icon -->
+    <link rel="icon" href="Sources/img/favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="Sources/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="Sources/css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="Sources/estilo.css">
+    <!-- Official Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+
+<body style="background-color:rgb(37, 37, 37);">
+
+    <div class="container">
+        <div class="interface">
+            <div class="barra">
+                &nbsp;
+            </div>
+        </div>
+        <div class="interface">
+            <header>
+                <h1>Calculadora Simplex</h1>
+            </header>
+            <div class="informa">
+                <p>
+                    Este programa permite calcular o maximo e o mínimo de sistemas utilizando o método simplex,é possível calcular sistemas com 2 até 3 variáveis, é recomendado que se tenha o sistema pré-montado antes de se calcular, e tambem não é necessário negativar a
+                    função objetivo, pois sistema já realiza a troca de sinais após informar os valores e pressionar o botão "Calcular MAX".
+                </p>
+            </div>
+
+
+            <div class="matriz">
+                <table>
+                    <tr>
+                        <th>
+                            <h5></h5>
+                        </th>
+                        <th>
+                            <h5>X1</h5>
+                        </th>
+                        <th>
+                            <h5>X2</h5>
+                        </th>
+                        <th>
+                            <h5>X3</h5>
+                        </th>
+                        <th>
+                            <h5>X4</h5>
+                        </th>
+                        <th>
+                            <h5>X5</h5>
+                        </th>
+                        <th>
+                            <h5>X6</h5>
+                        </th>
+                        <th>
+                            <h5>T.I</h5>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <h5 class="cabeca">Z</h5>
+                        </th>
+                        <td><input type="number" class="form-control" id="e00"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e01"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e02"></input>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="e03" value="0" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e04" value="0" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e05" value="0" readonly></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e06" value="0" readonly></input>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <th>
+                            <h5 class="cabeca">A</h5>
+                        </th>
+                        <td><input type="number" class="form-control" id="e10"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e11"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e12"></input>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="e13" value="1" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e14" value="0" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e15" value="0" readonly></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e16"></input>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            <h5 class="cabeca">B</h5>
+                        </th>
+                        <td><input type="number" class="form-control" id="e20"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e21"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e22"></input>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="e23" value="0" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e24" value="1" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e25" value="0" readonly></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e26"></input>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            <h5 class="cabeca">C</h5>
+                        </th>
+                        <td><input type="number" class="form-control" id="e30"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e31"></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e32"></input>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="e33" value="0" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e34" value="0" readonly></input>
+                        </td>
+                        <td>
+
+                            <input type="number" class="form-control" id="e35" value="1" readonly></input>
+                        </td>
+                        <td><input type="number" class="form-control" id="e36"></input>
+                        </td>
+                    </tr>
+                </table>
+                <button type="button" class="btn elegant-color" style="position: relative;padding:20px 46% 20px 46%;  margin-top: 60px;" id="CalcularMax"><h6 style="margin-top: 5px;color:#ffffff;">Calcular MAX</h6></button>
+            </div>
+            <div class="interface">
+                <div class="barra">
+                    &nbsp;
+                </div>
+            </div>
+
+            <div class="interface">
+                <div class="matriz">
+                    <div id="simplexResp">
+
+                    </div>
+                    <div id="simplexRela">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="interface">
+                <div class="barra">
+                    &nbsp;
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <!-- End your project here-->
+    <!-- jQuery -->
+    <script type="text/javascript" src="Sources/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="Sources/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="Sources/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="Sources/js/mdb.min.js"></script>
+    <!-- Bootstrap Official scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript" src="Sources/simplex.js"></script>
+
+</body>
+
+</html>
+
+}
